@@ -19,11 +19,14 @@ which devicebase || curl -fsSL https://downloads.devicebase.cn/cli/install.sh | 
 Install skills to your Claude Code project or user directory:
 
 ```bash
+# install skills
+npx skills add https://github.com/devicebase/skills --skill devicebase
+
 # Project-level (recommended)
-cp -r devicebase ~/.claude/skills/
+cp -r ~/.agents/skills/devicebase /your-project/.laude-code/.claude/skills/
 
 # User-level (available across all projects)
-cp -r devicebase ~/.claude/skills/
+cp -r ~/.agents/skills/devicebase ~/.claude/skills/
 ```
 
 Then activate in your Claude Code session by describing your task — the skill triggers automatically when working with mobile device automation.
