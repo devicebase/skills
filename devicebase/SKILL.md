@@ -20,7 +20,11 @@ A cross-platform Go CLI tool for remote device control. Supports **Android**, **
 ### Command Pattern
 
 ```
+# Commands requiring device serial
 devicebase -s <serial> <subcommand> [args]
+
+# Global commands (no serial required)
+devicebase list-devices [flags]
 ```
 
 ### All Commands
@@ -40,6 +44,7 @@ devicebase -s <serial> <subcommand> [args]
 | `device-info` | (none) | Get device hardware and status info |
 | `dump-hierarchy` | (none) | Get UI accessibility tree as JSON |
 | `screenshot` | (none) | Capture screen (stdout or file) |
+| `list-devices` | (none) | List all available devices |
 
 ---
 
@@ -76,6 +81,44 @@ DEVICEBASE_API_KEY=your_api_key \
 Missing serial produces:
 ```
 Error: required flag(s) "--serial" not set
+```
+
+---
+
+## Device Listing
+
+### list-devices
+
+List all available devices with their serial numbers, states, and basic info.
+
+```bash
+devicebase list-devices
+
+# Filter by keyword (brand/model/serial/name)
+devicebase list-devices --keyword "iPhone"
+
+# Filter by state (busy/free/offline)
+devicebase list-devices --state free
+
+# Combine filters
+devicebase list-devices --keyword "Samsung" --state busy
+```
+
+| Flag | Short | Default | Description |
+|------|-------|---------|-------------|
+| `--keyword` | `-k` | (none) | Filter by brand, model, serial, or name |
+| `--state` | | (none) | Filter by device state: `busy`, `free`, or `offline` |
+
+**Common workflows:**
+```bash
+# Find an available device for testing
+devicebase list-devices --state free
+
+# Find a specific device by model
+devicebase list-devices --keyword "Pixel"
+
+# Check all iOS devices
+devicebase list-devices --keyword "iPhone"
 ```
 
 ---
