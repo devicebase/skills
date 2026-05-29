@@ -70,7 +70,7 @@ DEVICEBASE_API_KEY=your_api_key \
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `DEVICEBASE_API_KEY` | Yes | APK key for authentication. Sent as `Authorization: Bearer <your_api_key>` on every request. |
+| `DEVICEBASE_API_KEY` | Yes | APK key for authentication. Sent as `Authorization: Bearer <your_api_key>` on every request. Get your API key from https://www.devicebase.cn/ |
 
 ---
 
