@@ -53,11 +53,15 @@ devicebase list-devices [flags]
 Both environment variables are **required**. The CLI exits with code 1 if either is missing.
 
 ```bash
-# Install Devicebase CLI (if not already installed)
+# Install Devicebase CLI on Linux/MacOS (if not already installed)
 which devicebase || curl -fsSL https://downloads.devicebase.cn/cli/install.sh | bash
+# Install Devicebase CLI on Windows (if not already installed)
+powershell -c "irm https://downloads.devicebase.cn/cli/install.ps1 | iex"
 
-# Export (recommended for repeated use)
+# Export API key to environment variable on Linux/MacOS (recommended for repeated use)
 export DEVICEBASE_API_KEY="your_api_key"
+# Export API key to environment variable on Windows (recommended for repeated use)
+$env:DEVICEBASE_API_KEY = "your_api_key"
 
 # Or inline (for one-off commands)
 DEVICEBASE_API_KEY=your_api_key \
