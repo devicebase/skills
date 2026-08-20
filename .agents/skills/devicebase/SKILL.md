@@ -20,11 +20,7 @@ A cross-platform tool for remote device control. Supports **Android**, **Harmony
 ### Command Pattern
 
 ```
-# Commands requiring device serial
 devicebase -s <serial> <subcommand> [args]
-
-# Global commands (no serial required)
-devicebase list-devices [flags]
 ```
 
 ### All Commands
@@ -44,7 +40,6 @@ devicebase list-devices [flags]
 | `device-info` | (none) | Get device hardware and status info |
 | `dump-hierarchy` | (none) | Get UI accessibility tree as JSON |
 | `screenshot` | (none) | Capture screen (stdout or file) |
-| `list-devices` | (none) | List all available devices |
 
 ---
 
@@ -53,15 +48,11 @@ devicebase list-devices [flags]
 Both environment variables are **required**. The CLI exits with code 1 if either is missing.
 
 ```bash
-# Install Devicebase CLI on Linux/MacOS (if not already installed)
+# Install Devicebase CLI (if not already installed)
 which devicebase || curl -fsSL https://downloads.devicebase.cn/cli/install.sh | bash
-# Install Devicebase CLI on Windows (if not already installed)
-powershell -c "irm https://downloads.devicebase.cn/cli/install.ps1 | iex"
 
-# Export API key to environment variable on Linux/MacOS (recommended for repeated use)
+# Export (recommended for repeated use)
 export DEVICEBASE_API_KEY="your_api_key"
-# Export API key to environment variable on Windows (recommended for repeated use)
-$env:DEVICEBASE_API_KEY = "your_api_key"
 
 # Or inline (for one-off commands)
 DEVICEBASE_API_KEY=your_api_key \
@@ -70,7 +61,7 @@ DEVICEBASE_API_KEY=your_api_key \
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `DEVICEBASE_API_KEY` | Yes | APK key for authentication. Sent as `Authorization: Bearer <your_api_key>` on every request. Get your API key from https://www.devicebase.cn/ |
+| `DEVICEBASE_API_KEY` | Yes | APK key for authentication. Sent as `Authorization: Bearer <your_api_key>` on every request. |
 
 ---
 
@@ -85,44 +76,6 @@ DEVICEBASE_API_KEY=your_api_key \
 Missing serial produces:
 ```
 Error: required flag(s) "--serial" not set
-```
-
----
-
-## Device Listing
-
-### list-devices
-
-List all available devices with their serial numbers, states, and basic info.
-
-```bash
-devicebase list-devices
-
-# Filter by keyword (brand/model/serial/name)
-devicebase list-devices --keyword "iPhone"
-
-# Filter by state (busy/free/offline)
-devicebase list-devices --state free
-
-# Combine filters
-devicebase list-devices --keyword "Samsung" --state busy
-```
-
-| Flag | Short | Default | Description |
-|------|-------|---------|-------------|
-| `--keyword` | `-k` | (none) | Filter by brand, model, serial, or name |
-| `--state` | | (none) | Filter by device state: `busy`, `free`, or `offline` |
-
-**Common workflows:**
-```bash
-# Find an available device for testing
-devicebase list-devices --state free
-
-# Find a specific device by model
-devicebase list-devices --keyword "Pixel"
-
-# Check all iOS devices
-devicebase list-devices --keyword "iPhone"
 ```
 
 ---
