@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "devicebase": {
+      "source": "devicebase/skills",
+      "sourceType": "github",
+      "skillPath": "devicebase/SKILL.md",
+      "computedHash": "b1701be1d4b909227b6a9ce455897ed9831dbb292f0992a9f20bebbc740cc975"
+    }
+  }
+}
