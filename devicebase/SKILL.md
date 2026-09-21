@@ -143,7 +143,7 @@ devicebase list-devices --type mobile --keyword "Samsung" --state busy
 
 Two system types are defined by exclusion: `linux` is every computer that is neither macOS nor Windows (Deepin / UOS / Kylin and unknown systems included), and `other` is every browser that is not Chrome / Chromium / Edge. An unrecognised value falls back to an exact match on the device `type`.
 
-**The `serialno` is the device's `serialno` field** (e.g. `db-mttul4i41di8`). The `device_sn` UUID also resolves — the gateway looks devices up with `WHERE (serialno = ? OR device_sn = ?)`.
+**The `serialno` is the device's `serialno` field** (e.g. `your-serialno`). The `device_sn` UUID also resolves — the gateway looks devices up with `WHERE (serialno = ? OR device_sn = ?)`.
 
 **Common workflows:**
 
